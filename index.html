@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student marks calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+            body {
+            background: linear-gradient(135deg, #001f3f 0%, #2e6f83 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .card {
+            border: none;
+            border-radius: 12px;
+            background: #ffffff;
+            }
+            h2 {
+            color: #001f3f;
+            font-weight: 600;
+            }
+            .btn-primary {
+            background: linear-gradient(135deg, #001f3f 0%, #236b67 100%);
+            border: none;
+            }
+            .btn-primary:hover {
+            background: linear-gradient(135deg, #0047ab 0%, #001f3f 100%);
+            }
+        </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow" style="width: 400px;">
+            <h2 class="text-center mb-4">Student Marks Calculator</h2>
+            <!--student name-->
+            <input type="text" id="studentName" class="form-control mb-3" placeholder="Enter student name">
+            <!--marks input-->  
+            <input type="number" id="marks1" class="form-control mb-2" placeholder="Enter marks for subject 1">
+            <input type="number" id="marks2" class="form-control mb-2" placeholder="Enter marks for subject 2">
+            <input type="number" id="marks3" class="form-control mb-2" placeholder="Enter marks for subject 3">
+            <input type="number" id="marks4" class="form-control mb-2" placeholder="Enter marks for subject 4">
+            <input type="number" id="marks5" class="form-control mb-2" placeholder="Enter marks for subject 5">
+            <input type="number" id="marks6" class="form-control mb-2" placeholder="Enter marks for subject 6">
+            <!--button-->
+            <button class="btn btn-primary w-100 mb-3" onclick="calculateResults()">Calculate</button>
+                    <!--results display-->
+                    <div id="results" class="text-center result"></div>
+                </div>
+            </div>
+
+                <script>
+                    function calculateResults() {
+                        let name = document.getElementById("studentName").value;
+                        if (!name || !document.getElementById("marks1").value || !document.getElementById("marks2").value || !document.getElementById("marks3").value || !document.getElementById("marks4").value || !document.getElementById("marks5").value || !document.getElementById("marks6").value) {
+                            alert("Please fill in all fields");
+                            return;
+                        }
+                    let marks1 = document.getElementById("marks1").value;
+                    let marks2 = document.getElementById("marks2").value;
+                    let marks3 = document.getElementById("marks3").value;
+                    let marks4 = document.getElementById("marks4").value;
+                    let marks5 = document.getElementById("marks5").value;
+                    let marks6 = document.getElementById("marks6").value;
+                        let total = parseFloat(marks1) + parseFloat(marks2) + parseFloat(marks3) + parseFloat(marks4) + parseFloat(marks5) + parseFloat(marks6);
+                        let percentage = (total / 600) * 100;
+                        let grade = "";
+                        if (percentage >= 90) {
+                            grade = "A+";
+                        } else if (percentage >= 80) {
+                            grade = "A";
+                        } else if (percentage >= 70) {
+                            grade = "B";
+                        } else if (percentage >= 60) {
+                            grade = "C";
+                        } else if (percentage >= 50) {
+                            grade = "D";
+                        } else {
+                            grade = "F";
+                        }
+                        document.getElementById("results").innerHTML = `
+                            <h4>Student: ${name}</h4>
+                            <p>Total Marks: ${total}</p>
+                            <p>Percentage: ${percentage.toFixed(2)}%</p>
+                            <p>Grade: ${grade}</p>
+                        `;
+                    }
+                </script>
+            </body>
+            </html>
+
+
+        
+
+    
+
